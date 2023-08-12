@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="message-box">
+    <h2>Chat Room: {{code}}</h2>
+    <div class="messages" id="messages"></div>
+    <div class="input">
+        <input type="text" rows="3" placeholder="Message #chit-chating.." name="typing" id="typing">
+        <button  type="button" name="send" id="send-btn" onClick="sendMessage()">Send</button>
+    </div>
+</div>
+<script type="text/javascript">
+    var socketio = io();
+
+    const messages = document.getElementById("messages")
+
+    const dialog = (name, msg) => {
+        const content = `
+        <div class="textlog">
+            <span>
+                <strong>${name}</strong>:${msg}
+            </span>
+            <span class = "date">
+                ${new Date().toLocaleString()}
+            </span>
+        </div>
+
+        `;
+        messages.innerHTML += content;
+    };
+
+    socketio.on("message", (data) => {
+        dialog(data.name, data.message);
+    })
+
+    const sendMessage = () => {
+        const message = document.getElementById("typing");
+        if (message.value == "") return;
+        socketio.emit("message", {data:message.value});
+        message.value = "";
+    };
+</script>
+
+{% for msg in messages %}
+    <script type="text/javascript">
+        dialog("{{msg.name}}", "{{msg.message}}")
+    </script>
+{% endfor %}
+{% endblock %}

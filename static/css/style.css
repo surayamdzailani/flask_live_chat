@@ -1,0 +1,71 @@
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.chatroom-setup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: black solid 1px ;
+    margin-top: 300px;
+    padding: 10px;
+}
+
+.join-stuff{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 2px;
+}
+
+.create{
+    width: 100%;
+    margin-top: 2px;
+}
+
+.error-box{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: red;
+    margin-top: 2px;
+}
+
+li{
+    list-style-type: none;
+}
+
+.message-box{
+    border: black solid 1px;
+    border-radius: 10px;
+    background-color: wheat;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    align-items: stretch;
+    margin-top: 40px;
+}
+
+.messages{
+    overflow-y: scroll;
+    flex: 1;
+    width: 100%;
+}
+
+.input{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+h2 {
+    text-align: center;
+}
+
+#typing{
+    flex: 1;
+}
